@@ -26,7 +26,7 @@ module Globalize
         stash.each do |locale, attrs|
           translation = record.translations.find_or_initialize_by_locale(locale.to_s)
           attrs.each { |attr_name, value| translation[attr_name] = value }
-          translation.save!
+          translation.save
         end
         stash.clear
       end

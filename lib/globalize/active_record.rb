@@ -44,8 +44,9 @@ module Globalize
         return if translates?
         options = attr_names.extract_options!
 
-        class_inheritable_accessor :translation_class, :translated_attribute_names
+        class_inheritable_accessor :translation_class, :translated_attribute_names, :build_all_translations
         class_inheritable_writer :required_attributes
+        self.build_all_translations = options[:build_empty] || false
         self.translation_class = ActiveRecord.build_translation_class(self, options)
         self.translated_attribute_names = attr_names.map(&:to_sym)
 
