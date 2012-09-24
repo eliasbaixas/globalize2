@@ -22,7 +22,7 @@ module Globalize
 
         klass.class_eval do
           set_table_name(options[:table_name])
-          belongs_to target.name.underscore.gsub('/', '_')
+          belongs_to target.name.underscore.gsub('/', '_'), :inverse_of => :translations
           def locale; read_attribute(:locale).to_sym; end
           def locale=(locale); write_attribute(:locale, locale.to_s); end
         end
@@ -57,6 +57,7 @@ module Globalize
         has_many :translations, :class_name  => translation_class.name,
                                 :foreign_key => my_foreign_key,
                                 :dependent   => :delete_all,
+                                :inverse_of   => self.name.underscore.gsub('/', '_'),
                                 :extend      => HasManyExtensions
 
         named_scope :with_translations, lambda { |locale|
