@@ -23,8 +23,12 @@ module Globalize
         klass.class_eval do
           set_table_name(options[:table_name])
           belongs_to target.name.underscore.gsub('/', '_').intern, :inverse_of => :translations
-          def locale; read_attribute(:locale).to_sym; end
-          def locale=(locale); write_attribute(:locale, locale.to_s); end
+          def locale
+            read_attribute(:locale).blank? ? '' : read_attribute(:locale).to_sym
+          end
+          def locale=(locale)
+            write_attribute(:locale, locale.to_s)
+          end
         end
 
         klass
