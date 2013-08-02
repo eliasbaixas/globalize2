@@ -84,3 +84,5 @@ h2. Related solutions
 * "easy_globalize2_accessors":http://github.com/astropanic/easy_globalize2_accessors - easily access (read and write) globalize2-translated fields (astropanic, Tomasz Stachewicz)</li>
 * "globalize2-easy-translate":http://github.com/bsamman/globalize2-easy-translate - adds methods to easily access or set translated attributes to your model (bsamman)</li>
 * "batch_translations":http://github.com/alvarezrilla/batch_translations - allow saving multiple Globalize2 translations in the same request (Jose Alvarez Rilla)</li>
+
+Adding DHH
